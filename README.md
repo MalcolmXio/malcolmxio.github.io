@@ -27,5 +27,6 @@
   - [Intent](android/components/components.md#intent)
   - [Fragment](android/components/components.md#fragment)
   - [WorkManager](android/components/components.md#workmanager)
+  - [Room](android/data/data_storage.md#субд)
 
 ### System Design
