@@ -274,4 +274,4 @@ WorkManager решает задачи по работе в режимах Doze m
 
 Ограничения: время работы - несколько секунд
 
-## Content Provider (see [[content-provider]])
+## [Content Provider](../content_provider/content_provider.md#content-provider)
