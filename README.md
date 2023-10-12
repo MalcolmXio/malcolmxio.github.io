@@ -6,5 +6,6 @@ Content:
 
 - Data Structures
 - Java
+  - [Generics](/language/java/generics/generics.md)
 - Kotlin
 - Concurrency
