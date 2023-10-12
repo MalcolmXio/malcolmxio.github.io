@@ -75,4 +75,39 @@ Integer.valueOf(300) !== Integer.valueOf(300)
 "abc" !== String("abc".toCharArray())
 
 "abc" === String("abc".toCharArray()).intern()
+
+intern() - позволяет поместить строку-объект в пул
+```
+
+Задача: что напечатает код?
+
+```Kotlin
+class IntHolder(
+    private val value: Int, // Преобразуется в примитив
+) {
+    private val nullableValue: Int? = value // Преобразуется в объект
+
+    fun compareInt(other: Int) {
+        println(value === other)
+        println(nullableValue === other)
+    }
+}
+
+fun main() {
+    val oneHolder = IntHolder(1) // 1 - в пуле, поэтому Boxing не сработает
+    oneHolder.compareInt(1)
+
+    val thousandHolder = IntHolder(1000)
+    thousandHolder.compareInt(1000)
+
+}
+```
+
+Ответ:
+
+```Kotlin
+true
+true
+true
+false
 ```
