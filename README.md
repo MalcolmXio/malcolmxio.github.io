@@ -23,6 +23,7 @@
   - [ContentProvider](android/content_provider/content_provider.md#content-provider)
 
 - Additional components
+  - [View]()
   - [Intent](android/components/components.md#intent)
   - [Fragment](android/components/components.md#fragment)
   - [WorkManager](android/components/components.md#workmanager)
