@@ -23,10 +23,19 @@
   - [ContentProvider](android/content_provider/content_provider.md#content-provider)
 
 - Additional components
-  - [View](android/view/view.md#view)
   - [Intent](android/components/components.md#intent)
   - [Fragment](android/components/components.md#fragment)
-  - [WorkManager](android/components/components.md#workmanager)
   - [Room](android/data/data_storage.md#субд)
+
+- UI
+  - [View](android/view/view.md#view)
+  - [View Lifecycle](android/view/view.md#view-lifecycle)
+  - [ViewGroup](android/view/view.md#viewgroup)
+  - [Touches](android/view/view.md#touches)
+  - [RecyclerView](android/view/view.md#recyclerview)
+
+- Background
+  - [WorkManager](android/components/components.md#workmanager)
+  - [Doze Mode & App Standby](android/components/components.md#doze-mode--standby)
 
 ### System Design
