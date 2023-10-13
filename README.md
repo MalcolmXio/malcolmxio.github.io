@@ -13,6 +13,7 @@
   - [JMM](/language/java/jmm/jmm.md)
   - [JVM](language/java/jvm/jvm.md#jvm)
 - Kotlin
+  - [Coroutines](language/java/coroutines/coroutines.md#coroutines)
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
 
