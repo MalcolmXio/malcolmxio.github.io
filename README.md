@@ -17,6 +17,7 @@
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
   - [Synchronized](language/java/synchronized/synchronized.md#synchronized)
+  - [Volatile](language/java/volatile/volatile.md#volatile)
 
 ### Android
 
