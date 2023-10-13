@@ -39,4 +39,11 @@
   - [WorkManager](android/components/components.md#workmanager)
   - [Doze Mode & App Standby](android/components/components.md#doze-mode--standby)
 
+- Architecture
+  - [SOLID](android/architecture/arch.md#solid)
+  - [IOC](android/architecture/arch.md#inversion-of-control)
+  - [composition](android/architecture/arch.md#composition-over-inheritance)
+  - [design patterns](android/architecture/arch.md#design-patterns)
+  - [android arch](android/architecture/arch.md#android-arch)
+
 ### System Design
