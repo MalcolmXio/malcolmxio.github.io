@@ -16,6 +16,7 @@
   - [Coroutines](language/java/coroutines/coroutines.md#coroutines)
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
+  - [Synchronized](language/java/synchronized/synchronized.md#synchronized)
 
 ### Android
 
