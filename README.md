@@ -11,6 +11,7 @@
   - [Types System](/language/java/types_system/types_system.md)
   - [Generics](/language/java/generics/generics.md)
   - [JMM](/language/java/jmm/jmm.md)
+  - [JVM](language/java/jvm/jvm.md#jvm)
 - Kotlin
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
