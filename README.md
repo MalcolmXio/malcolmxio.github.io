@@ -31,6 +31,7 @@
   - [Intent](android/components/components.md#intent)
   - [Fragment](android/components/components.md#fragment)
   - [Room](android/data/data_storage.md#субд)
+  - [Context](android/components/components.md#context)
 
 - UI
   - [View](android/view/view.md#view)
