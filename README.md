@@ -48,4 +48,6 @@
   - [design patterns](android/architecture/arch.md#design-patterns)
   - [android arch](android/architecture/arch.md#android-arch)
 
+- [Handler/Looper](android/handler/handler.md#handlerloopermessage-queue)
+
 ### System Design
