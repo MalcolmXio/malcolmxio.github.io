@@ -13,6 +13,7 @@
   - [JMM](/language/java/jmm/jmm.md)
 - Kotlin
 - Concurrency
+  - [Atomics](language/java/atomics/atomics.md#atomics)
 
 ### Android
 
