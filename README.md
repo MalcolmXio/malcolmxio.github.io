@@ -53,6 +53,6 @@
 
 - [Handler/Looper](android/handler/handler.md#handlerloopermessage-queue)
 
-### [Gradle](#gradle)
+### [Gradle](android/gradle/gradle.md#gradle)
 
 ### System Design
