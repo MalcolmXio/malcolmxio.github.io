@@ -134,6 +134,23 @@ startActivity(intent)
 - в манифесте
 - при запуске активити через `Intent.addFlags()`
 
+### Как запустить стек из нескольких активити?
+
+Для старта стека из нескольких активити используется класс TaskStackBuilder.
+
+```Kotlin
+val taskStackBuilder = TaskStackBuilder.create(context)
+    .addNextIntent(Intent(context, Activity1::class.java))
+    .addNextIntent(Intent(context, Activity2::class.java))
+    .addNextIntent(Intent(context, Activity3::class.java))
+
+taskStackBuilder.startActivities()
+```
+
+После вызова метода startActivities(), стартует только activity3. Информация об activity1 и activity2 хранится в стеке. Когда пользователь нажимает «назад», или на activity3 вызывается метод finish(), создается и стартует activity2.
+
+Этот механизм полезен для реализации роутинга при запуске приложения через deep link.
+
 ### task affinity
 
 Если задать произвольный affinity, то это позволит приложению создать еще один activity стек. Таким образом, можно иметь несколько стеков для одного приложения.
@@ -243,6 +260,88 @@ onDetach()
 Если активити пересоздается, то не нужно выполнять транзакции еще раз, тк FragmentManager сделает это за нас.
 
 `retainInstance = true` (Deprecated - use ViewModel) - фрагмент не будет уничтожен при пересоздании активити. Похожий механизм использует вьюмодель.
+
+### Как сохраняется стек фрагментов?
+
+В FragmentActivity перед уничтожением будет вызван метод onSaveInstanceState(), внутри которого сохраняется состояние всех фрагментов в стеке:
+
+`mFragments` - ссылка на `FragmentManager` активити
+
+```Java
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+     super.onSaveInstanceState(outState);
+     Parcelable p = mFragments.saveAllState();
+     if (p != null) {
+         outState.putParcelable(FRAGMENTS_TAG, p);
+     }
+}
+```
+
+метод `FragmentManager.saveAllState()` вернет объект `FragmentManagerState` который содержит информацию обо всех активных фрагментах и стеке.
+
+Далее, при пересохдании активити вызовется onCreate:
+
+```Java
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+     mFragments.attachActivity(this, mContainer, null);
+     // Old versions of the platform didn't do this!
+     if (getLayoutInflater().getFactory() == null) {
+         getLayoutInflater().setFactory(this);
+     }
+      
+     super.onCreate(savedInstanceState);
+     
+     NonConfigurationInstances nc = (NonConfigurationInstances)
+             getLastNonConfigurationInstance();
+     if (nc != null) {
+         mAllLoaderManagers = nc.loaders;
+     }
+     if (savedInstanceState != null) {
+         Parcelable p = savedInstanceState.getParcelable(FRAGMENTS_TAG);
+         mFragments.restoreAllState(p, nc != null ? nc.fragments : null);
+     }
+     mFragments.dispatchCreate();
+ }
+```
+
+метод restoreAllState выглядит следующим образом:
+
+```Java
+void restoreAllState(Parcelable state, ArrayList<Fragment> nonConfig) {
+    ...
+    if (state == null) return;
+    FragmentManagerState fms = (FragmentManagerState)state;
+    ...
+    mActive = new ArrayList<Fragment>(fms.mActive.length);
+       if (mAvailIndices != null) {
+          mAvailIndices.clear();
+       }
+       for (int i=0; i<fms.mActive.length; i++) {
+           FragmentState fs = fms.mActive[i];
+           if (fs != null) {
+              Fragment f = fs.instantiate(mActivity, mParent);
+              if (DEBUG) Log.v(TAG, "restoreAllState: active #" + i + ": " + f);
+              mActive.add(f);
+              // Now that the fragment is instantiated (or came from being
+                // retained above), clear mInstance in case we end up re-restoring
+                // from this FragmentState again.
+                fs.mInstance = null;
+            } else {
+                mActive.add(null);
+                if (mAvailIndices == null) {
+                    mAvailIndices = new ArrayList<Integer>();
+                }
+                if (DEBUG) Log.v(TAG, "restoreAllState: avail #" + i);
+                mAvailIndices.add(i);
+            }
+        }
+    ...
+}
+```
+
+Каждый объект FragmentState используется для создания фрагмента через рефлексию и дефолтный! конструктор. Вот почему важно не использовать другие конструкторы.
 
 ## Context
 
