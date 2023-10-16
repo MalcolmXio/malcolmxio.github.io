@@ -14,6 +14,7 @@
   - [JVM](language/java/jvm/jvm.md#jvm)
 - Kotlin
   - [Coroutines](language/java/coroutines/coroutines.md#coroutines)
+  - [Inline functions](language/java/inline_functions/inline.md#inline-функции)
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
   - [Synchronized](language/java/synchronized/synchronized.md#synchronized)
