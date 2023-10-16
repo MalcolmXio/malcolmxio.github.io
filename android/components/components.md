@@ -392,7 +392,10 @@ Started Service запускается методом `Context.startService() / 
 ЖЦ Started Service:
 
 - `onCreate()`
-- `onStartCommand()` - вызывается каждый раз при вызове Context.startService(). Происходит на главном потоке.
+- `onStartCommand()` - вызывается каждый раз при вызове Context.startService(). Происходит на главном потоке. Возвращаемое значение из onStartCommand() должно быть одним из следующих:
+  - START_NOT_STICKY - не пересоздает сервис, если его убила система
+  - START_STICKY - пересоздает сервис, если его убила система, но последний Intent не будет доставлен
+  - START_REDELIVER_INTENT - пересоздает сервис, если его убила система, последний Intent будет доставлен
 - `onDestroy()`
 
 Остановка сервиса:
