@@ -200,6 +200,16 @@ vButton.setOnClickListener {
 }
 ```
 
+### Как ViewModel переживает пересоздание активити
+
+Инстанс ViewModel попадает во ViewModelStore, если ViewModel создавалась через свойство-делегат `by viewModel`.
+
+Класс ComponentActivity реализует метод getViewModelStore(): ViewModelStore интерфейса ViewModelStoreOwner.
+
+ComponentActivity использует переопределенный метод Activity.onRetainNonConfigurationInstance() для сохранения объекта ViewModelStore. Этот метод вызывается между onStop() и onDestroy() и возвращает произвольный объект, который сохраняется системой во время пересоздания активити.
+
+При вызове getViewModelStore(), ComponentActivity получает сохраненный ViewModelStore с помощью метода getLastNonConfigurationInstance().
+
 ## Fragment
 
 - Кусок UI на весь или часть экрана
