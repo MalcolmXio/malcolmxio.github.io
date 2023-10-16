@@ -131,6 +131,49 @@ startActivity(intent)
 
 Если пометить запуск активити флагом SINGLE_INSTANCE, то новый стек будет создан автоматически и туда будет помещена активити.
 
+### Activity Result API
+
+Если нам нужно стартануть из одной активити другую, а затем вернуться на предыдущую, при этом передав обратно какие-то данные, можно воспользоваться Activity Result API. `onActivityResult()` - deprecated
+
+Шаги по использованию:
+
+1. Создание контракта
+
+```Kotlin
+class MySecondActivityContract : ActivityResultContract<String, Int?>() {
+
+   override fun createIntent(context: Context, input: String?): Intent {
+       return Intent(context, SecondActivity::class.java)
+           .putExtra("my_input_key", input)
+   }
+
+   override fun parseResult(resultCode: Int, intent: Intent?): Int? = when {
+       resultCode != Activity.RESULT_OK -> null
+       else -> intent?.getIntExtra("my_result_key", 42)
+   }
+
+   override fun getSynchronousResult(context: Context, input: String?): SynchronousResult<Int?>? {
+       return if (input.isNullOrEmpty()) SynchronousResult(42) else null
+   }
+}
+```
+
+2. Регистрация контракта
+
+```Kotlin
+val activityLauncher = registerForActivityResult(MySecondActivityContract()) { result ->
+   // используем result
+}
+```
+
+3. Запуск контракта
+
+```Kotlin
+vButton.setOnClickListener {
+   activityLauncher.launch("What is the answer?")
+}
+```
+
 ## Fragment
 
 - Кусок UI на весь или часть экрана
