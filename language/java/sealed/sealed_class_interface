@@ -1,0 +1,28 @@
+# sealed class
+
+sealed class представляет ограниченную иерархию наследников. Все подклассы известны на этапе компиляции.
+
+В этом смысле, sealed class похож на enum. Однако каждая константа в enum существует только в одном экземпляре, когда для наследника sealed class-а можно создать сколько угодно экземпляров.
+
+sealed class - абстрактный класс. Может иметь абстрактные члены.
+
+Наследники sealed class-а должны быть объявлены в том же пакете, что и он сам.
+
+## sealed interface
+
+sealed interfase по сути - то же самое, что и sealed class. Только это интерфейс. Его методы являются абстрактными по-умолчанию.
+
+## when expression
+
+Удобно использовать `sealed class`, когда оперируем им в `when` выражении:
+
+```Kotlin
+fun log(e: Error) = when(e) {
+    is FileReadError -> { println("Error while reading file ${e.file}") }
+    is DatabaseError -> { println("Error while reading from database ${e.source}") }
+    is RuntimeError ->  { println("Runtime error") }
+    // the `else` clause is not required because all the cases are covered
+}
+```
+
+Все наследники известны на момент компиляции, поэтому нам не нужна ветка `else`
