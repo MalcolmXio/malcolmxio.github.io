@@ -15,6 +15,7 @@
 - Kotlin
   - [Coroutines](language/java/coroutines/coroutines.md#coroutines)
   - [Inline functions](language/java/inline_functions/inline.md#inline-функции)
+  - [Data class](language/java/data_class/data_class.md#data-class)
 - Concurrency
   - [Atomics](language/java/atomics/atomics.md#atomics)
   - [Synchronized](language/java/synchronized/synchronized.md#synchronized)
