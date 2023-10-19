@@ -61,3 +61,4 @@
 
 - [API](system_design/api/api.md#api)
 - [Pagination](system_design/pagination/pagination.md#pagination)
+- [Data Storage](system_design/data/data_storage.md#data-storage-options)
