@@ -37,7 +37,7 @@ public class User {
     private int age;
     private String passport;
 
-	//getters and setters, constructor
+    //getters and setters, constructor
 
     @Override
     public boolean equals(Object o) {

@@ -62,9 +62,17 @@ startActivity(intent)
 - `ViewModel`
 - `onSaveInstanceState`
 
-### onSaveInstanceState
+#### onSaveInstanceState
 
-складываем данные в Bundle - примитивы, `Parcelable`, `Serializable`
+складываем данные в Bundle - примитивы, `Parcelable`, `Serializable`. Есть ограничение на `IBinder`, который пропускает через себя Bundle. Около 1 MB. Если больше - упадем с `TransactionTooLargeException`.
+
+**Про передачу картинки:**
+
+В общем случае не стоит передавать картинку напрямую через Intent из-за ограничений размера транзакции.
+
+Можно пометить ее как transient. В таком случае мы получаем ссылку на саму картинку. Но при сериализации/десериализации поле будет пустым.
+
+Самый лучший вариант - сохранить в файл и передать URI.
 
 `Serializable`:
 
