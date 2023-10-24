@@ -8,6 +8,7 @@
 
 - Data Structures
 - Java
+  - [hashcode](language/java/equals_hashcode/hashcode.md#hashcode)
   - [Types System](/language/java/types_system/types_system.md)
   - [Generics](/language/java/generics/generics.md)
   - [JMM](/language/java/jmm/jmm.md)
