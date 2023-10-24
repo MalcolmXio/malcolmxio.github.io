@@ -14,6 +14,7 @@
   - [JMM](/language/java/jmm/jmm.md)
   - [JVM](language/java/jvm/jvm.md#jvm)
 - Kotlin
+  - [Object vs Companion object](language/java/object/object.md#object-vs-companion-object)
   - [Coroutines](language/java/coroutines/coroutines.md#coroutines)
   - [Inline functions](language/java/inline_functions/inline.md#inline-функции)
   - [Data class](language/java/data_class/data_class.md#data-class)
