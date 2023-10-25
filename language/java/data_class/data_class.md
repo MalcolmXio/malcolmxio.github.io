@@ -26,5 +26,4 @@ equals/hashCode - автоматически используют поля в к
 
 Поля, объявленные не в конструкторе, не участвуют в реализации equals/hashCode
 
-> :heavy_exclamation_mark:  
-Один из аргументов data class-а может быть без переопределенного equals/hashCode (например: Throwable из Java). В таком случае, в дата классе придется переопределять equals/hashCode руками.
+> Один из аргументов data class-а может быть без переопределенного equals/hashCode (например: Throwable из Java). В таком случае, в дата классе придется переопределять equals/hashCode руками.
