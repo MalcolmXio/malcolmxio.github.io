@@ -57,6 +57,10 @@
 
 - [Handler/Looper](android/handler/handler.md#handlerloopermessage-queue)
 
+- DI
+  - [Dagger](android/di/dagger.md#dagger)
+  - [manual](android/di/manual.md#manual-di)
+
 ### [Gradle](android/gradle/gradle.md#gradle)
 
 ### System Design
